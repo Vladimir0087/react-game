@@ -1,0 +1,20 @@
+.cells {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    background: #fff;
+    border: 1px solid #222222;
+    cursor: pointer;
+    outline: none;
+    font-size: 40px;
+    transition: .5s all ease;
+}
+.cellsInput {
+    font-size: 80px;
+}
+.cells:hover {
+    background: #c2c2c2;
+    transition: .5s all ease;
+}
