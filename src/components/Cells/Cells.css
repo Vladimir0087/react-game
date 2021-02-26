@@ -12,9 +12,20 @@
     transition: .5s all ease;
 }
 .cellsInput {
-    font-size: 80px;
+    font-size: 70px;
 }
 .cells:hover {
     background: #c2c2c2;
-    transition: .5s all ease;
+}
+.viewCells1 {
+    background: rgb(223, 250, 101);
+    color: green;
+    width: 90px;
+    height: 90px;
+}
+.viewCells2 {
+    background: rgb(100, 237, 255);
+    color: rgb(103, 10, 253);
+    width: 80px;
+    height: 80px;
 }

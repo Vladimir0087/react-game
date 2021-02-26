@@ -12,12 +12,12 @@
     height: 35px;
     margin-bottom: 25px;
     cursor: pointer;
-    color: white;
+    color: #ffffff;
     outline: none;
     background: #222222;
     border: 1px solid white;
 }
-.startBtn:hover {
+.startBtn:hover, .fullScreenBtn:hover {
     background: #c2c2c2;
     color: #222222;
     transition: .5s all ease;
@@ -27,3 +27,29 @@
     font-size: 36px;
     color: white;
 }
+.winCells {
+    background: rgb(143, 218, 133);
+}
+.fullScreenMode {
+    width: 300px;
+}
+.optionsMode {
+    max-width: 450px;
+}
+.fullScreenMode, .optionsMode {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.fullScreenBtn, .optionsBtn{
+    height: 35px;
+    cursor: pointer;
+    color: #ffffff;
+    outline: none;
+    background: #222222;
+    border: 1px solid white;
+    padding: 0 10px;
+}
+
+

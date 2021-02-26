@@ -1,0 +1,26 @@
+.footerContainer {
+    position: absolute;
+    bottom: 0;
+    background: rgb(133, 133, 133);
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+}
+.logo {
+    width: 150px;
+    transition: .5s all ease;
+}
+.account {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    transition: .5s all ease;
+}
+.account:hover {
+    color: rgb(105, 255, 5);
+}
+.logo:hover {
+    opacity: 0.5;
+}
