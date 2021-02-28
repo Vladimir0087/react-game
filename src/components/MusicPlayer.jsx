@@ -21,21 +21,15 @@ clickMusic.loop = true
 
 export default function MusicPlayer (props) {
   const classes = useStyles();
-  const [value, setValue] = useState(30);
+  const [valueMusic, setValueMusic] = useState(localStorage.getItem('valueMusic') ? JSON.parse(localStorage.getItem('valueMusic')) : 30);
   const [musicOn, setMusicOn] = useState(false);
 
-  // const clickMusic = new Audio(music)
-  // clickMusic.loop = true
-
   const handleChange = (event, newValue) => {
-    // document.addEventListener('touchstart', handler, {passive: true});
-    // clickMusic.addEventListener("touchstart", handleChange, {passive: true});
-    setValue(newValue);
+    setValueMusic(newValue);
+    localStorage.setItem('valueMusic', JSON.stringify(newValue));
   };
 
-  // clickMusic.addEventListener('touchstart', handleChange, true);
-
-  clickMusic.volume = value / 100;
+  clickMusic.volume = valueMusic / 100;
 
   const onClick = () => {
     if (props.soundOn) props.clickSound.play()
@@ -62,7 +56,7 @@ export default function MusicPlayer (props) {
           <VolumeDown />
         </Grid>
         <Grid item xs>
-          <Slider value={value} onChange={handleChange} aria-labelledby="continuous-slider" />
+          <Slider value={valueMusic} onChange={handleChange} aria-labelledby="continuous-slider" />
         </Grid>
         <Grid item>
           <VolumeUp />

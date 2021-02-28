@@ -17,14 +17,14 @@ const useStyles = makeStyles({
 
 export default function SoundPlayer(props) {
   const classes = useStyles();
-  const [value, setValue] = useState(30);
+  const [valueSounds, setValueSounds] = useState(localStorage.getItem('valueSounds') ? JSON.parse(localStorage.getItem('valueSounds')) :30);
 
   const handleChange = (event, newValue) => {
-    // document.addEventListener('touchstart', handler, {passive: true});
-    setValue(newValue);
+    setValueSounds(newValue);
+    localStorage.setItem('valueSounds', JSON.stringify(newValue))
   };
 
-  props.clickSound.volume = value / 100;
+  props.clickSound.volume = valueSounds / 100;
 
   const onClick = () => {
     if (props.soundOn) {
@@ -51,7 +51,7 @@ export default function SoundPlayer(props) {
           <VolumeDown />
         </Grid>
         <Grid item xs>
-          <Slider value={value} onChange={handleChange} aria-labelledby="continuous-slider" />
+          <Slider value={valueSounds} onChange={handleChange} aria-labelledby="continuous-slider" />
         </Grid>
         <Grid item>
           <VolumeUp />

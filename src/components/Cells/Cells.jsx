@@ -17,4 +17,3 @@ export default function Cells({value, onCellClick, i, viewBoard}) {
         <button className={classnames(classNames, viewCells)} onClick={onCellClick} id={i}>{value}</button>
     )
 }
-// {classnames(`${classNames}, ${viewCells}`)}

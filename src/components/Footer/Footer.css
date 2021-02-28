@@ -1,6 +1,4 @@
 .footerContainer {
-    position: absolute;
-    bottom: 0;
     background: rgb(133, 133, 133);
     width: 100%;
     display: flex;
