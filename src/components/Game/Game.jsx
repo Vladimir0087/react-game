@@ -26,6 +26,7 @@ export default function Game() {
     const [timeOn, setTimeOn] = useState(localStorage.getItem('timeOn') ? JSON.parse(localStorage.getItem('timeOn')) : false)
     const [winPos, setWinPos] = useState(localStorage.getItem('winPos') ? JSON.parse(localStorage.getItem('winPos')) : [])
     const [autoPlayOn, setAutoPlayOn] = useState(localStorage.getItem('autoPlayOn') ? JSON.parse(localStorage.getItem('autoPlayOn')) : false)
+    const [computerOn, setComputerOn] = useState(localStorage.getItem('computerOn') ? JSON.parse(localStorage.getItem('computerOn')) : false)
 
     const funcSetSec = useCallback(() => {
         setSec((s) => (s + 1))
@@ -72,6 +73,7 @@ export default function Game() {
     const onCellClick = (ind) => {
         const boardChange = [...board]
         if (boardChange[ind] || isWinner) return
+        setXMove((s) => !s)
         if(!timeOn) setTimeOn(true)
         if (soundOn) clickSound.play();
         if (xMove) {
@@ -83,7 +85,7 @@ export default function Game() {
         localStorage.setItem('board', JSON.stringify(boardChange))
         localStorage.setItem('xMove', JSON.stringify(!xMove))
         localStorage.setItem('moves', JSON.stringify(moves + 1))
-        setXMove((s) => !s)
+        // setXMove((s) => !s)
         if(moves + 1 === 9 && !isWinner) setTimeOn(false)
         setMoves((s) => s + 1)
 
@@ -251,22 +253,6 @@ export default function Game() {
         if (e.key === '9' && cellRef3.current) cellRef3.current.click()
     })
 
-    // const getRandomValue = (min, max) => {
-    //     min = Math.ceil(min);
-    //     max = Math.floor(max);
-    //     return Math.floor(Math.random() * (max - min + 1)) + min;
-    // }
-    // const getEmptyCells = (data) => data.map((val, i) => [val, i]).filter(el => el[0] === "")
-    // const findRandomMove = (data) => {
-    //     const emptyCells = getEmptyCells(data)
-    //     console.log(emptyCells)
-    //     if (emptyCells.length > 0) {
-    //       const randomValue = getRandomValue(0, emptyCells.length - 1)
-    //       const index = emptyCells[randomValue][1]
-    //       return index
-    //     }
-    //     return null
-    // }
     const autoMove = useCallback(() => {
         const getRandomValue = (min, max) => {
             min = Math.ceil(min);
@@ -278,7 +264,6 @@ export default function Game() {
             const emptyCells = getEmptyCells(data)
             if (emptyCells.length > 0) {
               const randomValue = getRandomValue(0, emptyCells.length - 1)
-              console.log('hhhhhhhhh')
               const index = emptyCells[randomValue][1]
               return index
             }
@@ -299,6 +284,7 @@ export default function Game() {
     const autoPlay = () => {
         if (soundOn) clickSound.play()
         playNewGame()
+        setComputerOn(false)
         setAutoPlayOn((s) => !s)
     }
     useEffect(() => {localStorage.setItem('autoPlayOn', JSON.stringify(autoPlayOn))}, [autoPlayOn])
@@ -311,6 +297,21 @@ export default function Game() {
         return () => clearInterval(intervalID)
     }, [autoMove, autoPlayOn, moves])
 
+    const computerPlay = () => {
+        if (soundOn) clickSound.play()
+        setAutoPlayOn(false)
+        setComputerOn((s) => !s)
+    }
+    useEffect(() => {
+        let timerId
+        if(computerOn && !xMove && moves < 9) timerId = setTimeout(() => autoMove(), 300)
+        return () => clearTimeout(timerId)
+    }, [autoMove, computerOn, xMove, moves])
+    useEffect(() => {localStorage.setItem('computerOn', JSON.stringify(computerOn))}, [computerOn])
+
+    const autoPlayClass = autoPlayOn ? 'autoplayOn' : 'autoplayOff'
+    const compOn = computerOn ? 'compOn' : 'compOff'
+
     return (
         <div className='wrapp'>
             <MusicPlayer name='Volume of music' soundOn={soundOn} clickSound={clickSound} musicSong={musicSong} />
@@ -318,7 +319,10 @@ export default function Game() {
             { Options() }
             { fullScreenMode() }
             { newGame }
-            <button className="fullScreenBtn" onClick={autoPlay}>Автоигра</button>
+            <div className='autoPlay'>
+                <button className={autoPlayClass} onClick={autoPlay}>Автоигра</button>
+                <button className={compOn} onClick={computerPlay}>Играть с компьютером</button>
+            </div>
             <Board onCellClick={onCellClick} board={board} viewBoard={viewBoard} arrRef={arrRef} />
             { infoGame }
             <Footer />

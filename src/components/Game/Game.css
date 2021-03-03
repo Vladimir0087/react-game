@@ -21,7 +21,7 @@
     border: 1px solid white;
     transition: .5s all ease-in-out;
 }
-.startBtn:hover, .fullScreenBtn:hover, .optionsBtn:hover {
+.startBtn:hover, .fullScreenBtn:hover, .optionsBtn:hover, .autoplayOff:hover, .autoplayOn:hover, .compOff:hover, .compOn:hover {
     background: #c2c2c2;
     color: #222222;
 }
@@ -34,19 +34,19 @@
 .winCells {
     background: rgb(143, 218, 133) !important;
 }
-.fullScreenMode {
+.fullScreenMode, .autoPlay {
     width: 300px;
 }
 .optionsMode {
     max-width: 450px;
 }
-.fullScreenMode, .optionsMode {
+.fullScreenMode, .optionsMode, .autoPlay {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
 }
-.fullScreenBtn, .optionsBtn{
+.fullScreenBtn, .optionsBtn, .autoplayOff, .compOff {
     height: 35px;
     cursor: pointer;
     color: #ffffff;
@@ -59,4 +59,23 @@
 .hotkeys {
     font-size: 16px;
 }
-
+.autoplayOn {
+    height: 35px;
+    cursor: pointer;
+    color: #ffffff;
+    outline: none;
+    background: rgba(114, 255, 86, 0.5);
+    border: 1px solid white;
+    padding: 0 10px;
+    transition: .5s all ease-in-out;
+}
+.compOn {
+    height: 35px;
+    cursor: pointer;
+    color: #ffffff;
+    outline: none;
+    background: rgba(114, 255, 86, 0.5);
+    border: 1px solid white;
+    padding: 0 10px;
+    transition: .5s all ease-in-out;
+}
