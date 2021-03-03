@@ -24,7 +24,7 @@ export default function Statistics ({arrStat}) {
                                     <td>{item[0]}</td>
                                     <td>{item[1]}</td>
                                     <td>{item[2]}</td>
-                                    <td>{item[3]}</td>
+                                    <td>{item[3] % 60}</td>
                                 </tr>
                             ))
                         }

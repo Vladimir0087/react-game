@@ -9,7 +9,7 @@
     cursor: pointer;
     outline: none;
     font-size: 40px;
-    transition: .5s all ease;
+    transition: .5s all ease-in-out;
 }
 .cellsInput {
     font-size: 70px;

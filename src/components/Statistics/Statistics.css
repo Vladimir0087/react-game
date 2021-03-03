@@ -1,11 +1,11 @@
 .statWrap td, th {
     margin: 5px;
-    color: rgb(255, 255, 255);
+    /* color: rgb(255, 255, 255); */
     text-align: center;
 }
 
 .statistic {
     width:300px;
     margin-top: 25px;
-    color: white;
+    /* color: white; */
 }

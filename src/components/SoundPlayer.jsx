@@ -10,7 +10,7 @@ import VolumeOffIcon from '@material-ui/icons/VolumeOff';
 const useStyles = makeStyles({
   root: {
     width: 250,
-    background: '#222222',
+    background: 'rgba(255, 255, 255, 0)',
     color: 'white'
   },
 });

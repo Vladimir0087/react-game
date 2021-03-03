@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -7,22 +7,30 @@ import VolumeDown from '@material-ui/icons/VolumeDown';
 import VolumeUp from '@material-ui/icons/VolumeUp';
 import VolumeOffIcon from '@material-ui/icons/VolumeOff';
 import music from '../assets/music.mp3';
+import music2 from '../assets/music2.mp3';
+import music3 from '../assets/music3.mp3';
 
 const useStyles = makeStyles({
   root: {
     width: 250,
-    background: '#222222',
+    background: 'rgba(255, 255, 255, 0)',
     color: 'white'
   },
 });
 
-const clickMusic = new Audio(music)
-clickMusic.loop = true
-
 export default function MusicPlayer (props) {
+
   const classes = useStyles();
   const [valueMusic, setValueMusic] = useState(localStorage.getItem('valueMusic') ? JSON.parse(localStorage.getItem('valueMusic')) : 30);
   const [musicOn, setMusicOn] = useState(false);
+
+  let track = music
+  if(props.musicSong === 0) track = music
+  if(props.musicSong === 1) track = music2
+  if(props.musicSong === 2) track = music3
+
+  const clickMusic = useMemo(() => new Audio(track), [track])
+  clickMusic.loop = true
 
   const handleChange = (event, newValue) => {
     setValueMusic(newValue);
@@ -36,7 +44,10 @@ export default function MusicPlayer (props) {
     setMusicOn((s) => !s)
   }
 
-  musicOn ? clickMusic.play() : clickMusic.pause()
+useEffect(() => {
+    musicOn ? clickMusic.play() : clickMusic.pause()
+    return () => clickMusic.pause()
+}, [musicOn, clickMusic])
 
   const styles= {fontSize: '30px', color: '#ff5e5e', cursor: 'pointer' }
 

@@ -3,7 +3,7 @@
     flex-wrap: wrap;
     width: 300px;
     height: 300px;
-    transition: .5s all ease;
+    transition: .5s all ease-in-out;
 }
 .board1 {
     width: 270px;

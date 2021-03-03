@@ -2,7 +2,7 @@ import React from 'react'
 import classnames from 'classnames'
 import './Cells.css'
 
-export default function Cells({value, onCellClick, i, viewBoard}) {
+export default function Cells({value, onCellClick, i, viewBoard, btnRef}) {
 
     let classNames = 'cells'
     if (value) {
@@ -14,6 +14,6 @@ export default function Cells({value, onCellClick, i, viewBoard}) {
         'viewCells0'
 
     return (
-        <button className={classnames(classNames, viewCells)} onClick={onCellClick} id={i}>{value}</button>
+        <button ref={btnRef} className={classnames(classNames, viewCells)} onClick={onCellClick} id={i}>{value}</button>
     )
 }

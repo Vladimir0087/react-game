@@ -2,10 +2,13 @@
     min-height: 100vh;
     width: 100%;
     background: #222222;
+    /* background: #757575; */
+    /* background: #757575; */
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    color: rgb(253, 253, 253);
 }
 .startBtn {
     width: 200px;
@@ -14,13 +17,13 @@
     cursor: pointer;
     color: #ffffff;
     outline: none;
-    background: #222222;
+    background: rgba(255, 255, 255, 0);
     border: 1px solid white;
+    transition: .5s all ease-in-out;
 }
-.startBtn:hover, .fullScreenBtn:hover {
+.startBtn:hover, .fullScreenBtn:hover, .optionsBtn:hover {
     background: #c2c2c2;
     color: #222222;
-    transition: .5s all ease;
 }
 .infoGame {
     width:300px;
@@ -29,7 +32,7 @@
     color: white;
 }
 .winCells {
-    background: rgb(143, 218, 133);
+    background: rgb(143, 218, 133) !important;
 }
 .fullScreenMode {
     width: 300px;
@@ -48,9 +51,12 @@
     cursor: pointer;
     color: #ffffff;
     outline: none;
-    background: #222222;
+    background: rgba(255, 255, 255, 0);
     border: 1px solid white;
     padding: 0 10px;
+    transition: .5s all ease-in-out;
 }
-
+.hotkeys {
+    font-size: 16px;
+}
 
