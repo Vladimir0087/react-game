@@ -165,7 +165,7 @@ export default function Game() {
     }
     useEffect(() => localStorage.setItem('hotKey', JSON.stringify(hotKey)), [hotKey])
 
-    const infoGame = <div>
+    const infoGame = <div className="wrapInfoGame">
         <button className="fullScreenBtn" onClick={openHotkeys} >Горячие клавиши</button>
         {hotKey ? <div className="infoGame">{hotKeys}</div> : null}
         <div className="infoGame">{infoGameText}</div>

@@ -14,7 +14,8 @@ const useStyles = makeStyles({
   root: {
     width: 250,
     background: 'rgba(255, 255, 255, 0)',
-    color: 'white'
+    color: 'white',
+    marginBottom: 0
   },
 });
 

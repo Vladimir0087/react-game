@@ -2,8 +2,6 @@
     min-height: 100vh;
     width: 100%;
     background: #222222;
-    /* background: #757575; */
-    /* background: #757575; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,8 +11,8 @@
 .startBtn {
     width: 200px;
     height: 35px;
-    margin-bottom: 25px;
     cursor: pointer;
+    margin-bottom: 10px;
     color: #ffffff;
     outline: none;
     background: rgba(255, 255, 255, 0);
@@ -27,15 +25,16 @@
 }
 .infoGame {
     width:300px;
-    margin-top: 25px;
-    font-size: 25px;
+    font-size: 20px;
     color: white;
+    margin-bottom: 5px;
 }
 .winCells {
     background: rgb(143, 218, 133) !important;
 }
 .fullScreenMode, .autoPlay {
     width: 300px;
+    margin-bottom: 10px;
 }
 .optionsMode {
     max-width: 450px;
@@ -44,7 +43,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 .fullScreenBtn, .optionsBtn, .autoplayOff, .compOff {
     height: 35px;
@@ -78,4 +77,16 @@
     border: 1px solid white;
     padding: 0 10px;
     transition: .5s all ease-in-out;
+}
+.wrapInfoGame {
+    position: absolute;
+    left: 5%;
+    margin-bottom: 12vh;
+}
+
+@media (max-width: 1000px) {
+    .wrapInfoGame {
+        position: inherit;
+        width: 300px;
+    }
 }
